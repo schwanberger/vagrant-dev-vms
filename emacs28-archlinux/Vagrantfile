@@ -32,7 +32,9 @@ Vagrant.configure("2") do |config|
     s.privileged = true
     s.inline = <<-SHELL
      pacman -R virtualbox-guest-utils-nox --noconfirm
-     pacman -Sy virtualbox-guest-utils emacs vim xorg-server xorg-xinit xterm git cmake fd llvm ripgrep aspell aspell-en languagetool --noconfirm --needed
+     pacman -Sy virtualbox-guest-utils emacs vim xorg-server xorg-xinit xterm git cmake fd llvm ripgrep aspell aspell-en languagetool pandoc \
+     ttf-jetbrains-mono ttc-iosevka-etoile ttc-iosevka-aile otf-overpass noto-fonts-extra ttf-nerd-fonts-symbols-mono \
+     --noconfirm --needed
      SHELL
     #s.reboot = true
   end
