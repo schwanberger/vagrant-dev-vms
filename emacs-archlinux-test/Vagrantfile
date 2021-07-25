@@ -28,25 +28,25 @@ Vagrant.configure("2") do |config|
     f.source = "../dotfiles_vm/."
     f.destination = "/home/vagrant"
   end
-  config.vm.provision "Re-install guest additions (X), X and tools", type: "shell" do |s|
-     s.privileged = true
-     s.inline = <<-SHELL
-     pacman -R virtualbox-guest-utils-nox --noconfirm
-     pacman -Sy virtualbox-guest-utils emacs vim xorg-server xorg-xinit xterm git cmake fd llvm ripgrep aspell aspell-en languagetool --noconfirm --needed
-     SHELL
-     #s.reboot = true
+  config.vm.provision "Emacs 27/28 pre-reqs", type: "shell" do |s|
+    s.privileged = false
+    s.path = "../scripts/packages_prereq.sh"
+  end
+  config.vm.provision "Emacs 28 compilation (native-comp)", type: "shell" do |s|
+    s.privileged = false
+    s.path = "../scripts/emacs28_install.sh"
   end
   # This will pull "my" dotfiles, if you are not me, then you might not want this behaviour
   config.vm.provision "Use chezmoi to fetch dotfiles from gitrepo", type: "shell" do |s|
-     s.privileged = true
-     s.inline = <<-SHELL
+    s.privileged = true
+    s.inline = <<-SHELL
      pacman -Sy chezmoi --noconfirm --needed
      sudo -iu vagrant /bin/bash -c 'chezmoi init --apply schwanberger'
      SHELL
   end
   config.vm.provision "Clone Doom Emacs repo", type: "shell" do |s|
-     s.privileged = false
-     s.inline = <<-SHELL
+    s.privileged = false
+    s.inline = <<-SHELL
      git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
      SHELL
   end
