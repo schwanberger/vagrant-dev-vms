@@ -30,12 +30,12 @@ Vagrant.configure("2") do |config|
   end
   config.vm.provision "Emacs 27/28 pre-reqs", type: "shell" do |s|
     s.privileged = false
-    s.script = "../scripts/packages_prereq.sh"
+    s.path = "../scripts/packages_prereq.sh"
     #s.reboot = true
   end
   config.vm.provision "Emacs 28 compilation (native-comp)", type: "shell" do |s|
     s.privileged = false
-    s.script = "../scripts/emacs28_install.sh"
+    s.path = "../scripts/emacs28_install.sh"
     #s.reboot = true
   end
   # This will pull "my" dotfiles, if you are not me, then you might not want this behaviour
