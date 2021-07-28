@@ -11,4 +11,5 @@ fi
 /usr/bin/VBoxClient-all
 setxkbmap dk
 #exec xterm
-exec emacs
+#exec emacs
+exec i3
