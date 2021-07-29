@@ -34,6 +34,6 @@ emacs_pre_reqs
 
 #Last steps
 mkdir -p /home/vagrant/.gnupg
-echo "keyserver keyserver.ubuntu.com" > /home/vagrant/.gnupg/gpg.conf
+echo "keyserver keyserver.ubuntu.com" >> /home/vagrant/.gnupg/gpg.conf
 
 elapsed_time "Entire script" SECONDS
