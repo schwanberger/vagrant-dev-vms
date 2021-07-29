@@ -66,3 +66,7 @@ compile_install_emacs-git
 elapsed_time "Entire script" SECONDS
 
 # This is something new in a new branch
+#
+# This is another test in the new branch
+#
+# This is the third and final test change in the new branch
