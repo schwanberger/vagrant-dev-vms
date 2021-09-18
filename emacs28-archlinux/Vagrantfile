@@ -9,19 +9,25 @@ Vagrant.configure("2") do |config|
   config.vbguest.no_remote = true
   config.vm.box = "terrywang/archlinux"
   config.vm.box_version = "3.21.0707"
+   config.vm.synced_folder "C:\\", '/c/', id: 'windows-root',
+                                                owner: 'root',
+                                                group: 'root',
+                                                mount_options: ['dmode=777,fmode=777']
+
 
   config.vm.define $vmname do |node|
     node.vm.network "private_network", ip: $ip
+    node.vm.network "forwarded_port", guest: 22, host: 2666
     node.vm.hostname = $vmname
     node.vm.provider "virtualbox" do |vb|
-      vb.gui = true
-      #vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      vb.gui = false
+      vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       # VMSVGA seems to perform okay, so this will be outcommented for now
       # vb.customize ['modifyvm', :id, '--graphicscontroller', 'vboxsvga']
       vb.customize ["modifyvm", :id, "--vram", "128"]
       vb.name = $vmname
-      vb.memory = 2048
-      vb.cpus = 2
+      vb.memory = 4096
+      vb.cpus = 4
     end
   end
   config.vm.provision "Place VM dotfiles", type: "file" do |f|
@@ -49,7 +55,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "Clone Doom Emacs repo", type: "shell" do |s|
     s.privileged = false
     s.inline = <<-SHELL
-     git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+     git clone --depth 1 https://github.com/hlissner/doom-emacs ~/doom-ivy
      SHELL
   end
 end

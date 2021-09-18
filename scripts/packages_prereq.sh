@@ -22,7 +22,7 @@ emacs_pre_reqs () {
           sudo pacman --quiet --sync --refresh --noconfirm --needed \
                virtualbox-guest-utils emacs vim xorg-server xorg-xinit xterm git cmake fd llvm ripgrep aspell aspell-en languagetool pandoc \
                ttf-jetbrains-mono ttc-iosevka-etoile ttc-iosevka-aile otf-overpass noto-fonts-extra ttf-dejavu bash-language-server shellcheck sbcl \
-               i3-wm dmenu \
+               pass archlinux-keyring \
                1>/dev/null
 
           elapsed_time "${FUNCNAME[0]}" SECONDS
