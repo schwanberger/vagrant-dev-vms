@@ -19,10 +19,10 @@ emacs_pre_reqs () {
           SECONDS=0
 
           echo "Installing emacs pre-reqs (X, fonts, tools for lsp i.a.)..."
-          sudo pacman --quiet --sync --refresh --noconfirm --needed \
+          sudo pacman --quiet --sync --refresh --refresh --noconfirm --needed \
                virtualbox-guest-utils emacs vim xorg-server xorg-xinit xterm git cmake fd llvm ripgrep aspell aspell-en languagetool pandoc \
                ttf-jetbrains-mono ttc-iosevka-etoile ttc-iosevka-aile otf-overpass noto-fonts-extra ttf-dejavu bash-language-server shellcheck sbcl \
-               pass archlinux-keyring \
+               pass archlinux-keyring libssh2 openssh \
                1>/dev/null
 
           elapsed_time "${FUNCNAME[0]}" SECONDS
