@@ -56,4 +56,11 @@ Vagrant.configure('2') do |config|
      git clone --depth 1 https://github.com/hlissner/doom-emacs ~/doom-ivy
     SHELL
   end
+  config.vm.provision 'Allow X11 forwarding', type: 'shell' do |s|
+    s.privileged = true
+    s.inline = <<-SHELL
+     sed -i 's/^#X11Forwarding no/X11Forwarding yes/' /etc/ssh/sshd_config
+     systemctl restart sshd
+    SHELL
+  end
 end
