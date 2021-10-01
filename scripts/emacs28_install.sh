@@ -49,8 +49,8 @@ compile_install_emacs-git () {
     (
     #Resetting `SECONDS` counter in this subshell
     SECONDS=0
-    echo "Compiling and installing emacs-git (with JIT-feature)..."
-    yay -G emacs-git; cd emacs-git; sed -i '/JIT=/c\JIT=\"YES\"' PKGBUILD; makepkg --syncdeps --install --noconfirm --needed --clean \
+    echo "Compiling and installing emacs-git, checkout 28 release branch (with JIT-feature, AOT)..."
+    yay -G emacs-git; cd emacs-git; cp /c/Projects/vagrant-dev-vms/scripts/emacs28_git_jit_aot_28.60.PKGBUILD PKGBUILD; makepkg --syncdeps --install --noconfirm --needed --clean \
         1>/dev/null
 
     elapsed_time "${FUNCNAME[0]}" SECONDS
