@@ -59,7 +59,7 @@ compile_install_emacs-git () {
 
 
 #Executing defined functions
-install_yay
+#install_yay # Outcommented - yay included in newest vagrant box and breaking this
 install_libgccjit
 compile_install_emacs-git
 
