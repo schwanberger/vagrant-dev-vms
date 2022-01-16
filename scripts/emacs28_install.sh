@@ -31,8 +31,10 @@ install_libgccjit () {
     (
     #Resetting `SECONDS` counter in this subshell
     SECONDS=0
-    echo "Compiling and installing libgccjit - and as a depencency gcc..."
+    echo "Compiling and installing libgccjit - and as a depencency gcc... also sneaking in alegreya-sans..."
     yay --sync --noconfirm --needed --quiet libgccjit \
+        1>/dev/null
+    yay --sync --noconfirm --needed --quiet ttf-alegreya-sans \
         1>/dev/null
 
 
